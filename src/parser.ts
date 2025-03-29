@@ -4,12 +4,10 @@
  * Provides details about the beat's position, duration, and optional notes.
  */
 export interface Beat {
-    /** The position of this beat in the show. Integer and unique */
-    position: number;
     /** Duration from this beat to the next in seconds. This is derived from tempo */
     duration: number;
-    /** Human readable notes about this beat */
-    notes: string | null;
+    /** Human-readable notes about this beat. These are not the musical "notes" that are played. */
+    notes?: string;
 }
 
 /**
@@ -20,9 +18,9 @@ export interface Measure {
     /** The measure's number in the piece. Unique and integer */
     number: number;
     /** Optional rehearsal mark for the measure. I.e. "Big Box A" or "Measure 128" */
-    rehearsalMark: string | null;
-    /** Human readable notes about the measure */
-    notes: string | null;
+    rehearsalMark?: string;
+    /** Human-readable notes about the measure. These are not the musical "notes" that are played. */
+    notes?: string;
     /** The beats that belong to this measure */
     beats: Beat[];
 }
@@ -41,11 +39,8 @@ export function parseMusicXml(xmlText: string): Measure[] {
     return [
         {
             number: 1,
-            rehearsalMark: null,
-            notes: null,
             beats: [
                 {
-                    position: 1,
                     duration: 4,
                     notes: "kick",
                 } satisfies Beat,
