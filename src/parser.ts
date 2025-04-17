@@ -31,20 +31,92 @@ export interface Measure {
  * @param xmlText The raw XML text representing a musical score
  * @returns An array of Measure objects representing the parsed musical composition
  */
-export function parseMusicXml(xmlText: string): Measure[] {
-    // WRITE YOUR CODE HERE.
+export interface Beat {
+    duration: number;
+    notes?: string;
+}
 
-    // Placeholder code to demonstrate the return type //
-    console.log(xmlText);
-    return [
-        {
-            number: 1,
-            beats: [
-                {
-                    duration: 4,
-                    notes: "kick",
-                } satisfies Beat,
-            ]
+export interface Measure {
+    number: number;
+    rehearsalMark?: string;
+    notes?: string;
+    beats: Beat[];
+}
+
+export function parseMusicXml(xmlText: string): Measure[] {
+    const measures: Measure[] = [];
+    let pos = 0;
+    let tempo:number = 0;
+    let timeSignature:string = "0/0";
+
+    // Defines the number of beats based on time signature
+    const bigBeats: { [key: string]: number } = {
+        '2/2': 4,
+        '3/2': 3,
+        '2/4': 2,
+        '3/4': 3,
+        '4/4': 4,
+        '6/4': 6,
+        '6/8': 2,
+        '7/8': 7,
+    };
+
+    // Extract beats measure-by-measure
+    while (pos < xmlText.length) {
+        // Extract measure
+        const measureStart = xmlText.indexOf('<measure', pos);
+        const measureEnd = xmlText.indexOf('</measure>', measureStart) + 10;
+        const measureText = xmlText.substring(measureStart, measureEnd);
+        if (measureStart === -1) break;
+
+        // Extract measure number
+        const measureNumber = measureText.match(/number="(\d+)"/);
+        const number = measureNumber ? parseInt(measureNumber[1] as string) : -1;
+
+        // Update tempo if new tempo exists
+        const newTempo = measureText.match(/<sound tempo="(\d+)"/)
+        if(newTempo) {
+            tempo = parseInt(newTempo[1] as string);
         }
-    ] satisfies Measure[];
+
+        // Update time signature if new one exists
+        const timeSignatureMatch = measureText.match(/<time>(.*?)<\/time>/s);
+        if (timeSignatureMatch && timeSignatureMatch[1]) {
+            const beats = timeSignatureMatch[1].match(/<beats>(\d+)<\/beats>/);
+            const beatType = timeSignatureMatch[1].match(/<beat-type>(\d+)<\/beat-type>/);
+            if (beats && beatType) {
+                timeSignature = `${beats[1]}/${beatType[1]}`;
+            }
+        }
+
+        // Extract rehearsal mark
+        const rehearsalMatch = measureText.match(/<rehearsal[^>]*>(.*?)<\/rehearsal>/);
+        const rehearsalMark = rehearsalMatch ? rehearsalMatch[1] : undefined;
+
+
+        // Check for valid time signature
+        const bigBeatCount = bigBeats[timeSignature];
+        if (bigBeatCount === undefined) {
+            throw new Error(`Unsupported time signature: ${timeSignature}`);
+        }
+
+        // Push associated number of big beats for time signature
+        const beats: Beat[] = [];
+        for (let i = 0; i < bigBeatCount; i++) {
+            beats.push({ duration: 60/tempo });
+        }
+
+        // Push measure
+        if (rehearsalMark) {
+            measures.push({number: number, rehearsalMark:rehearsalMark, beats: beats});
+        }
+        else{
+            measures.push({number: number, beats: beats});
+        }
+
+        // update position
+        pos = measureEnd;
+    }
+
+    return measures;
 }
