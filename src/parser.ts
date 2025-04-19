@@ -46,19 +46,19 @@ export interface Measure {
 export function parseMusicXml(xmlText: string): Measure[] {
     const measures: Measure[] = [];
     let pos = 0;
-    let tempo:number = 0;
-    let timeSignature:string = "0/0";
+    let tempo: number = 0;
+    let timeSignature: string = "0/0";
 
     // Defines the number of beats based on time signature
     const bigBeats: { [key: string]: number } = {
-        '2/2': 4,
+        '2/2': 2,
         '3/2': 3,
         '2/4': 2,
         '3/4': 3,
         '4/4': 4,
         '6/4': 6,
         '6/8': 2,
-        '7/8': 7,
+        '7/8': 7, // Likely this will end up being 3 "big beats" (for situations like 2+2+3)
     };
 
     // Extract beats measure-by-measure
@@ -75,7 +75,7 @@ export function parseMusicXml(xmlText: string): Measure[] {
 
         // Update tempo if new tempo exists
         const newTempo = measureText.match(/<sound tempo="(\d+)"/)
-        if(newTempo) {
+        if (newTempo) {
             tempo = parseInt(newTempo[1] as string);
         }
 
@@ -103,15 +103,15 @@ export function parseMusicXml(xmlText: string): Measure[] {
         // Push associated number of big beats for time signature
         const beats: Beat[] = [];
         for (let i = 0; i < bigBeatCount; i++) {
-            beats.push({ duration: 60/tempo });
+            beats.push({ duration: 60 / tempo });
         }
 
         // Push measure
         if (rehearsalMark) {
-            measures.push({number: number, rehearsalMark:rehearsalMark, beats: beats});
+            measures.push({ number: number, rehearsalMark: rehearsalMark, beats: beats });
         }
-        else{
-            measures.push({number: number, beats: beats});
+        else {
+            measures.push({ number: number, beats: beats });
         }
 
         // update position
