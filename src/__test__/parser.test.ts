@@ -13,27 +13,26 @@ describe("real tests", () => {
 
     it("Full Score", async () => {
         const musicXmlText = await Bun.file("src/__test__/assets/Test Score.musicxml").text();
-        const qn144 = 60 / 144;
+        const bpm144 = 60 / 144;
         const hn80 = 60 / (80 * 2);
-        const qn120 = 60 / 120;
-        const qn180 = 60 / 180;
-        const qn360 = 60 / 360;
-        const qn90 = 60 / 90;
+        const bpm120 = 60 / 120;
+        const bpm180 = 60 / 180;
+        const bpm90 = 60 / 90;
         const expectedMeasures: Measure[] = [
             {
                 number: 1,
                 beats: [
                     {
-                        duration: qn144
+                        duration: bpm144
                     },
                     {
-                        duration: qn144
+                        duration: bpm144
                     },
                     {
-                        duration: qn144
+                        duration: bpm144
                     },
                     {
-                        duration: qn144
+                        duration: bpm144
                     },
                 ]
             },
@@ -41,16 +40,16 @@ describe("real tests", () => {
                 number: 2,
                 beats: [
                     {
-                        duration: qn144
+                        duration: bpm144
                     },
                     {
-                        duration: qn144
+                        duration: bpm144
                     },
                     {
-                        duration: qn144
+                        duration: bpm144
                     },
                     {
-                        duration: qn144
+                        duration: bpm144
                     },
                 ]
             },
@@ -58,16 +57,16 @@ describe("real tests", () => {
                 number: 3,
                 beats: [
                     {
-                        duration: qn144
+                        duration: bpm144
                     },
                     {
-                        duration: qn144
+                        duration: bpm144
                     },
                     {
-                        duration: qn144
+                        duration: bpm144
                     },
                     {
-                        duration: qn144
+                        duration: bpm144
                     },
                 ]
             },
@@ -75,16 +74,16 @@ describe("real tests", () => {
                 number: 4,
                 beats: [
                     {
-                        duration: qn144
+                        duration: bpm144
                     },
                     {
-                        duration: qn144
+                        duration: bpm144
                     },
                     {
-                        duration: qn144
+                        duration: bpm144
                     },
                     {
-                        duration: qn144
+                        duration: bpm144
                     },
                 ]
             },
@@ -308,10 +307,10 @@ describe("real tests", () => {
                 number: 17,
                 beats: [
                     {
-                        duration: qn120
+                        duration: bpm120
                     },
                     {
-                        duration: qn120
+                        duration: bpm120
                     },
                 ]
             },
@@ -320,10 +319,10 @@ describe("real tests", () => {
                 rehearsalMark: "152",
                 beats: [
                     {
-                        duration: qn120
+                        duration: bpm120
                     },
                     {
-                        duration: qn120
+                        duration: bpm120
                     },
                 ]
             },
@@ -331,10 +330,10 @@ describe("real tests", () => {
                 number: 19,
                 beats: [
                     {
-                        duration: qn120
+                        duration: bpm120
                     },
                     {
-                        duration: qn120
+                        duration: bpm120
                     },
                 ]
             },
@@ -342,10 +341,10 @@ describe("real tests", () => {
                 number: 20,
                 beats: [
                     {
-                        duration: qn120
+                        duration: bpm120
                     },
                     {
-                        duration: qn120
+                        duration: bpm120
                     },
                 ]
             },
@@ -353,10 +352,10 @@ describe("real tests", () => {
                 number: 21,
                 beats: [
                     {
-                        duration: qn120
+                        duration: bpm120
                     },
                     {
-                        duration: qn120
+                        duration: bpm120
                     },
                 ]
             },
@@ -364,10 +363,10 @@ describe("real tests", () => {
                 number: 22,
                 beats: [
                     {
-                        duration: qn120
+                        duration: bpm120
                     },
                     {
-                        duration: qn120
+                        duration: bpm120
                     },
                 ]
             },
@@ -375,10 +374,10 @@ describe("real tests", () => {
                 number: 23,
                 beats: [
                     {
-                        duration: qn120
+                        duration: bpm120
                     },
                     {
-                        duration: qn120
+                        duration: bpm120
                     },
                 ]
             }, {
@@ -386,16 +385,16 @@ describe("real tests", () => {
                 rehearsalMark: "jeff",
                 beats: [
                     {
-                        duration: qn180
+                        duration: bpm180
                     },
                     {
-                        duration: qn180
+                        duration: bpm180
                     },
                     {
-                        duration: qn180
+                        duration: bpm180
                     },
                     {
-                        duration: qn180
+                        duration: bpm180
                     },
                 ]
             },
@@ -403,16 +402,16 @@ describe("real tests", () => {
                 number: 25,
                 beats: [
                     {
-                        duration: qn180
+                        duration: bpm180
                     },
                     {
-                        duration: qn180
+                        duration: bpm180
                     },
                     {
-                        duration: qn180
+                        duration: bpm180
                     },
                     {
-                        duration: qn180
+                        duration: bpm180
                     },
                 ]
             },
@@ -420,16 +419,16 @@ describe("real tests", () => {
                 number: 26,
                 beats: [
                     {
-                        duration: qn180
+                        duration: bpm180
                     },
                     {
-                        duration: qn180
+                        duration: bpm180
                     },
                     {
-                        duration: qn180
+                        duration: bpm180
                     },
                     {
-                        duration: qn180
+                        duration: bpm180
                     },
                 ]
             },
@@ -437,16 +436,16 @@ describe("real tests", () => {
                 number: 27,
                 beats: [
                     {
-                        duration: qn180
+                        duration: bpm180
                     },
                     {
-                        duration: qn180
+                        duration: bpm180
                     },
                     {
-                        duration: qn180
+                        duration: bpm180
                     },
                     {
-                        duration: qn180
+                        duration: bpm180
                     },
                 ]
             },
@@ -454,16 +453,16 @@ describe("real tests", () => {
                 number: 28,
                 beats: [
                     {
-                        duration: qn180
+                        duration: bpm180
                     },
                     {
-                        duration: qn180
+                        duration: bpm180
                     },
                     {
-                        duration: qn180
+                        duration: bpm180
                     },
                     {
-                        duration: qn180
+                        duration: bpm180
                     },
                 ]
             },
@@ -471,10 +470,10 @@ describe("real tests", () => {
                 number: 29,
                 beats: [
                     {
-                        duration: qn90
+                        duration: bpm90
                     },
                     {
-                        duration: qn90
+                        duration: bpm90
                     },
                 ]
             },
@@ -482,10 +481,10 @@ describe("real tests", () => {
                 number: 30,
                 beats: [
                     {
-                        duration: qn90
+                        duration: bpm90
                     },
                     {
-                        duration: qn90
+                        duration: bpm90
                     },
                 ]
             },
@@ -493,10 +492,10 @@ describe("real tests", () => {
                 number: 31,
                 beats: [
                     {
-                        duration: qn90
+                        duration: bpm90
                     },
                     {
-                        duration: qn90
+                        duration: bpm90
                     },
                 ]
             },
@@ -504,10 +503,10 @@ describe("real tests", () => {
                 number: 32,
                 beats: [
                     {
-                        duration: qn90
+                        duration: bpm90
                     },
                     {
-                        duration: qn90
+                        duration: bpm90
                     },
                 ]
             },
@@ -515,16 +514,16 @@ describe("real tests", () => {
                 number: 33,
                 beats: [
                     {
-                        duration: qn180
+                        duration: bpm180
                     },
                     {
-                        duration: qn180
+                        duration: bpm180
                     },
                     {
-                        duration: qn180
+                        duration: bpm180
                     },
                     {
-                        duration: qn180
+                        duration: bpm180
                     },
                 ]
             },
@@ -532,16 +531,16 @@ describe("real tests", () => {
                 number: 34,
                 beats: [
                     {
-                        duration: qn180
+                        duration: bpm180
                     },
                     {
-                        duration: qn180
+                        duration: bpm180
                     },
                     {
-                        duration: qn180
+                        duration: bpm180
                     },
                     {
-                        duration: qn180
+                        duration: bpm180
                     },
                 ]
             },
@@ -549,16 +548,16 @@ describe("real tests", () => {
                 number: 35,
                 beats: [
                     {
-                        duration: qn180
+                        duration: bpm180
                     },
                     {
-                        duration: qn180
+                        duration: bpm180
                     },
                     {
-                        duration: qn180
+                        duration: bpm180
                     },
                     {
-                        duration: qn180
+                        duration: bpm180
                     },
                 ]
             },
@@ -566,13 +565,13 @@ describe("real tests", () => {
                 number: 36,
                 beats: [
                     {
-                        duration: qn90
+                        duration: bpm90
                     },
                     {
-                        duration: qn90
+                        duration: bpm90
                     },
                     {
-                        duration: qn90
+                        duration: bpm90
                     },
                 ]
             },
@@ -580,13 +579,13 @@ describe("real tests", () => {
                 number: 37,
                 beats: [
                     {
-                        duration: qn90
+                        duration: bpm90
                     },
                     {
-                        duration: qn90
+                        duration: bpm90
                     },
                     {
-                        duration: qn90
+                        duration: bpm90
                     },
                 ]
             },
@@ -594,16 +593,16 @@ describe("real tests", () => {
                 number: 38,
                 beats: [
                     {
-                        duration: qn180
+                        duration: bpm180
                     },
                     {
-                        duration: qn180
+                        duration: bpm180
                     },
                     {
-                        duration: qn180
+                        duration: bpm180
                     },
                     {
-                        duration: qn180
+                        duration: bpm180
                     },
                 ]
             },
@@ -611,10 +610,10 @@ describe("real tests", () => {
                 number: 39,
                 beats: [
                     {
-                        duration: qn90
+                        duration: bpm90
                     },
                     {
-                        duration: qn90
+                        duration: bpm90
                     },
                 ]
             },
@@ -622,10 +621,10 @@ describe("real tests", () => {
                 number: 40,
                 beats: [
                     {
-                        duration: qn90
+                        duration: bpm90
                     },
                     {
-                        duration: qn90
+                        duration: bpm90
                     },
                 ]
             },]
