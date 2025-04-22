@@ -612,19 +612,22 @@ describe("real tests", () => {
                     {
                         duration: qn90
                     },
-                    {
-                        duration: qn90
-                    },
                 ]
             },
             {
                 number: 38,
                 beats: [
                     {
-                        duration: qn180
+                        duration: qn90
                     },
                     {
-                        duration: qn180
+                        duration: qn90
+                    },
+                    {
+                        duration: qn90
+                    },
+                    {
+                        duration: qn90
                     },
                 ]
             },
