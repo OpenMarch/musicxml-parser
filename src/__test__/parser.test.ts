@@ -306,7 +306,6 @@ describe("real tests", () => {
             },
             {
                 number: 17,
-                rehearsalMark: "152",
                 beats: [
                     {
                         duration: qn120
@@ -318,6 +317,7 @@ describe("real tests", () => {
             },
             {
                 number: 18,
+                rehearsalMark: "152",
                 beats: [
                     {
                         duration: qn120
