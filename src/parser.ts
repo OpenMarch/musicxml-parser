@@ -100,9 +100,6 @@ export function parseMusicXml(xmlText: string): Measure[] {
             throw new Error(`Unsupported time signature: ${timeSignature}`);
         }
 
-        // @debug
-        console.log(`Measure ${number}: Time Signature: ${timeSignature}, Tempo Change: ${tempoChange}`);
-
         // Push associated number of big beats for time signature
         const beats: Beat[] = [];
         for (let i = 0; i < bigBeatCount; i++) {
