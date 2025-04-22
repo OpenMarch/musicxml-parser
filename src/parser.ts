@@ -49,16 +49,16 @@ export function parseMusicXml(xmlText: string): Measure[] {
     let tempo: number = 0;
     let timeSignature: string = "0/0";
 
-    // Defines the number of beats based on time signature
-    const bigBeats: { [key: string]: number } = {
-        '2/2': 2,
-        '3/2': 3,
-        '2/4': 2,
-        '3/4': 3,
-        '4/4': 4,
-        '6/4': 6,
-        '6/8': 2,
-        '7/8': 7, // Likely this will end up being 3 "big beats" (for situations like 2+2+3)
+    // Defines the number of beats and tempo change based on time signature
+    const bigBeats: { [key: string]: [number, number] } = {
+        '2/2': [4, 2],
+        '3/2': [3, 2],
+        '2/4': [2, 1],
+        '3/4': [3, 1],
+        '4/4': [4, 1],
+        '6/4': [6, 1],
+        '6/8': [2, 1],
+        '7/8': [7, 1] // Likely this will end up being 3 "big beats" (for situations like 2+2+3)
     };
 
     // Extract beats measure-by-measure
@@ -80,7 +80,7 @@ export function parseMusicXml(xmlText: string): Measure[] {
         }
 
         // Update time signature if new one exists
-        const timeSignatureMatch = measureText.match(/<time>(.*?)<\/time>/s);
+        const timeSignatureMatch = measureText.match(/<time[^>]*>(.*?)<\/time>/s);
         if (timeSignatureMatch && timeSignatureMatch[1]) {
             const beats = timeSignatureMatch[1].match(/<beats>(\d+)<\/beats>/);
             const beatType = timeSignatureMatch[1].match(/<beat-type>(\d+)<\/beat-type>/);
@@ -95,15 +95,18 @@ export function parseMusicXml(xmlText: string): Measure[] {
 
 
         // Check for valid time signature
-        const bigBeatCount = bigBeats[timeSignature];
-        if (bigBeatCount === undefined) {
+        const [bigBeatCount, tempoChange] = bigBeats[timeSignature] ?? [0, 0];
+        if (bigBeatCount == 0) {
             throw new Error(`Unsupported time signature: ${timeSignature}`);
         }
+
+        // @debug
+        console.log(`Measure ${number}: Time Signature: ${timeSignature}, Tempo Change: ${tempoChange}`);
 
         // Push associated number of big beats for time signature
         const beats: Beat[] = [];
         for (let i = 0; i < bigBeatCount; i++) {
-            beats.push({ duration: 60 / tempo });
+            beats.push({ duration: 60 / (tempo * tempoChange) });
         }
 
         // Push measure
