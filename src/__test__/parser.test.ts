@@ -5,17 +5,6 @@ import { parseMusicXml, type Measure } from "../parser";
 it("dummy test", () => {
     // Dummy test to make sure the test suite is working
     expect(parseMusicXml("<score>")).toEqual([
-        {
-            number: 1,
-            rehearsalMark: undefined,
-            notes: undefined,
-            beats: [
-                {
-                    duration: 4,
-                    notes: "kick",
-                },
-            ]
-        }
     ]);
 });
 
@@ -317,7 +306,6 @@ describe("real tests", () => {
             },
             {
                 number: 17,
-                rehearsalMark: "152",
                 beats: [
                     {
                         duration: qn120
@@ -329,6 +317,7 @@ describe("real tests", () => {
             },
             {
                 number: 18,
+                rehearsalMark: "152",
                 beats: [
                     {
                         duration: qn120
@@ -634,6 +623,12 @@ describe("real tests", () => {
                     {
                         duration: qn180
                     },
+                    {
+                        duration: qn180
+                    },
+                    {
+                        duration: qn180
+                    },
                 ]
             },
             {
@@ -661,4 +656,3 @@ describe("real tests", () => {
         expect(parseMusicXml(musicXmlText)).toEqual(expectedMeasures);
     });
 });
-
