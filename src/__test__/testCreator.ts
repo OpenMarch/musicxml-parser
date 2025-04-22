@@ -1,7 +1,7 @@
 import {type Measure} from "../parser";
 
 // Creates a measure list from a text file
-async function createTest(file: string): Promise<Measure[]> {
+export async function createTest(file: string): Promise<Measure[]> {
     const commands = await Bun.file(file).text();
     const commandList = commands.split('\n');
 
@@ -81,6 +81,3 @@ async function createTest(file: string): Promise<Measure[]> {
     // return generated measure list
     return measures;
 }
-
-const result = await createTest('src/__test__/assets/Test Creator.txt');
-console.dir(result, { depth: null });

@@ -1,12 +1,6 @@
 import { describe, expect, it } from "bun:test";
 import { parseMusicXml, type Measure } from "../parser";
-
-// "it" is the same as "test"
-it("dummy test", () => {
-    // Dummy test to make sure the test suite is working
-    expect(parseMusicXml("<score>")).toEqual([
-    ]);
-});
+import { createTest } from "./testCreator";
 
 describe("real tests", () => {
     // It would be smart to write smaller tests for each tempo change section
@@ -653,6 +647,7 @@ describe("real tests", () => {
                     },
                 ]
             },]
-        expect(parseMusicXml(musicXmlText)).toEqual(expectedMeasures);
+        const result = await createTest('src/__test__/assets/Test Creator.txt');
+        expect(result).toEqual(expectedMeasures);
     });
 });
