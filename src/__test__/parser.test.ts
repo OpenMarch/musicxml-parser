@@ -471,16 +471,10 @@ describe("real tests", () => {
                 number: 29,
                 beats: [
                     {
-                        duration: qn360
+                        duration: qn90
                     },
                     {
-                        duration: qn360
-                    },
-                    {
-                        duration: qn360
-                    },
-                    {
-                        duration: qn360
+                        duration: qn90
                     },
                 ]
             },
@@ -488,16 +482,10 @@ describe("real tests", () => {
                 number: 30,
                 beats: [
                     {
-                        duration: qn360
+                        duration: qn90
                     },
                     {
-                        duration: qn360
-                    },
-                    {
-                        duration: qn360
-                    },
-                    {
-                        duration: qn360
+                        duration: qn90
                     },
                 ]
             },
@@ -505,16 +493,10 @@ describe("real tests", () => {
                 number: 31,
                 beats: [
                     {
-                        duration: qn360
+                        duration: qn90
                     },
                     {
-                        duration: qn360
-                    },
-                    {
-                        duration: qn360
-                    },
-                    {
-                        duration: qn360
+                        duration: qn90
                     },
                 ]
             },
@@ -522,16 +504,10 @@ describe("real tests", () => {
                 number: 32,
                 beats: [
                     {
-                        duration: qn360
+                        duration: qn90
                     },
                     {
-                        duration: qn360
-                    },
-                    {
-                        duration: qn360
-                    },
-                    {
-                        duration: qn360
+                        duration: qn90
                     },
                 ]
             },
