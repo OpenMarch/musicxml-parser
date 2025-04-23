@@ -51,14 +51,14 @@ export function parseMusicXml(xmlText: string): Measure[] {
 
     // Defines the number of beats and tempo change based on time signature
     const bigBeats: { [key: string]: [number, number] } = {
-        '2/2': [4, 2],
-        '3/2': [3, 2],
-        '2/4': [2, 1],
-        '3/4': [3, 1],
-        '4/4': [4, 1],
-        '6/4': [6, 1],
-        '6/8': [2, 1],
-        '7/8': [7, 1] // Likely this will end up being 3 "big beats" (for situations like 2+2+3)
+        '2/2': [2, 1/2],
+        '3/2': [3, 1/2],
+        '2/4': [2, 1  ],
+        '3/4': [3, 1  ],
+        '4/4': [4, 1  ],
+        '6/4': [6, 1  ],
+        '6/8': [2, 2/3],
+        '7/8': [7, 1  ] // Likely this will end up being 3 "big beats" (for situations like 2+2+3)
     };
 
     // Extract beats measure-by-measure
