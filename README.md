@@ -1,5 +1,11 @@
 # musicxml-parser
 
+> ## THIS REPOSITORY IS NOW ARCHIVED
+>
+> OpenMarch has shifted to a monorepo structure, so this package has been moved to the main repo.
+> 
+> Find it at <https://github.com/OpenMarch/OpenMarch/tree/main/packages/musicxml-parser>
+
 A MusicXML parsing utility for the OpenMarch project
 
 ## Development
